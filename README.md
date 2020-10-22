@@ -33,6 +33,6 @@ You need to install `docker` and `docker-compose` according to your OS from foll
 
 ## What can be Improved?
 1. We can make use of `celery` instead of `django-crontab`
-1. We can optimize update database operations by cron job.
+1. We can optimize update database operations in cron job by designing some mechanism to fetch only those movies which don't exists in our system.
 1. We can make a separate container for database in order to allow our system to horizontally scale.
 1. We can open socket communication with the client, so that whenever a new movie is fetched from `Studio Ghibli Server`, we can notify our users in near real time.
