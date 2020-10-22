@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1.5rem;
+            background-color: #1f2258;
+            flex: 4;
+        }
+
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 25%;
+            border-radius: 2px;
+            padding: 1rem;
+            transition: all 0.1s;
+            border: 2px transparent solid;
+            height: 25rem;
+        }
+
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Style the counter cards */
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            height: 100%;
+            overflow: scroll;
+        }
+    </style>
+
+</head>
+<body>
+{% for movie in movies %}
+    <div class="column">
+        <div class="card">
+            <h3>{{ movie.title }}</h3>
+            <div style="text-align: left">
+                <div><b>Director:&nbsp</b> {{ movie.director }}</div>
+                <div><b>Producer:&nbsp</b> {{ movie.producer }}</div>
+                <div><b>Release Date:&nbsp</b> {{ movie.release_date }}</div>
+                <div><b>Rating:&nbsp</b> {{ movie.rt_score }}</div>
+            </div>
+            <h4>People</h4>
+            <div style="text-align: left">
+                {% for movie_person in movie.movie_person.all %}
+                    <li>{{ movie_person.person.name }}</li>
+                {% empty %}
+                    <div style="text-align: center">No People Found</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+</body>
+</html>
