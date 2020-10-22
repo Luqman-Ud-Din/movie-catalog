@@ -1,11 +1,17 @@
 # movie-catalog
 
+## Tech Stack
+1. Python 3.8.6
+1. Django 3.1.2
+
 ## Setup
 
 #### Pre-requisites
 You need to install `docker` and `docker-compose` according to your OS from following links
 1. [Docker](https://docs.docker.com/engine/install/)
+    1. Tested with Docker version `19.03.12, build 48a66213fe`
 1. [Docker Compose](https://docs.docker.com/compose/install/)
+    1. Tested with docker-compose version `1.26.2, build eefe0d31`
 
 #### Run Server
 1. `docker-compose build --no-cache`
