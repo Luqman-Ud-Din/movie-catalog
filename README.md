@@ -14,6 +14,9 @@ You need to install `docker` and `docker-compose` according to your OS from foll
 #### Run Tests
 `docker exec -it movie_catalog bash -c "python manage.py test"`
 
+#### Test Coverage Report
+`docker exec -it movie_catalog bash -c "coverage run --omit=*/migrations/* --source='.' manage.py test && coverage report"`
+
 #### How it Looks in Browser
 `http://localhost:8000/movies/`
 
@@ -21,3 +24,9 @@ You need to install `docker` and `docker-compose` according to your OS from foll
 
 ## Architecture
 ![architecture](movie-catalog-architecture.png)
+
+## What can be Improved?
+1. We can make use of `celery` instead of `django-crontab`
+1. We can optimize update database operations by cron job.
+1. We can make a separate container for database in order to allow our system to horizontally scale.
+1. We can open socket communication with the client, so that whenever a new movie is fetched from `Studio Ghibli Server`, we can notify our users in near real time.
